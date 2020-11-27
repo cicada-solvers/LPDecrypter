@@ -18,3 +18,9 @@ class EnglishAlphabet(Alphabet):
 
     def decode(self, encoded):
         return ''.join([_english_letters[value] for value in encoded])
+
+    def get_encoding_space(self):
+        return list(range(0, 26))
+
+    def get_encoding_space_cardinality(self):
+        return 26

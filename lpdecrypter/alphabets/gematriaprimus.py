@@ -27,6 +27,12 @@ class GematriaPrimus(Alphabet):
         """
         return ''.join(value_to_rune[value] for value in encoded)
 
+    def get_encoding_space(self):
+        return list(range(0, 29))
+
+    def get_encoding_space_cardinality(self):
+        return 29
+
 class ReverseGematriaPrimus(Alphabet):
     """
         The reverse Gematria primus runic alphabet
@@ -44,6 +50,12 @@ class ReverseGematriaPrimus(Alphabet):
             Decodes a list of integer representation of runic characters back into runes
         """
         return ''.join([value_to_rune[28 - value] for value in encoded])
+
+    def get_encoding_space(self):
+        return list(range(0, 29))
+
+    def get_encoding_space_cardinality(self):
+        return 29
 
 class RotatedGematriaPrimus(Alphabet):
     """
@@ -67,3 +79,9 @@ class RotatedGematriaPrimus(Alphabet):
             Decodes a list of integer representation of runic characters back into runes
         """
         return ''.join([value_to_rune[(value - self.rotations) % 29] for value in encoded])
+
+    def get_encoding_space(self):
+        return list(range(0, 29))
+
+    def get_encoding_space_cardinality(self):
+        return 29

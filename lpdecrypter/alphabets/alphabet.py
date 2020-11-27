@@ -18,6 +18,18 @@ class Alphabet(object):
         """
         pass
 
+    def get_encoding_space(self):
+        """
+            Returns a list of possible encoding values
+        """
+        pass
+
+    def get_encoding_space_cardinality(self):
+        """
+            Returns the encoding space caridnality
+        """
+        return len(self.get_encoding_space())
+
     def encode_words(self, words):
         """
             Encodes a list of words

@@ -107,33 +107,3 @@ class VigenereWithInterruptersCipher(Cipher):
                 i += 1
             result.append(decrypted)
         return result
-
-
-class MultipledVigenereCipher(Cipher):
-    """
-        Multiplied Vigenere is Vigenere but the key is multiplied not added
-    """
-    def __init__(self, key, modulo):
-        if not is_prime(modulo):
-            raise ValueError('Modulo needs to be prime')
-        self.key = key
-        self.key_len = len(key)
-        self.modulo = modulo
-
-    def encrypt(self, data):
-        return [
-            (value * self.key[i % self.key_len]) % self.modulo
-            for i, value in enumerate(data)
-        ]
-
-    def decrypt(self, data):
-        return [ # handle zeros in the key, but really key should have zeros
-            (value * inverse_modulo_or_zero(self.key[i % self.key_len], self.modulo)) % self.modulo
-            for i, value in enumerate(data)
-        ]
-
-    def encrypt_words(self, words):
-        raise NotImplementedError('Do this')
-
-    def decrypt_words(self, encrypted_list):
-        raise NotImplementedError('Do this')
