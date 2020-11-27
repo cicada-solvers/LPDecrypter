@@ -1,6 +1,8 @@
 from .cipher import Cipher
 from ..number_theory import is_prime, inverse_modulo_or_zero
 
+from ..benchmarking import profile
+
 class VigenereCipher(Cipher):
     """
         The Viginere cipher
@@ -13,12 +15,15 @@ class VigenereCipher(Cipher):
     def __encrypt_value(self, value, key):
         return (value + key) % self.modulo
 
+    @profile
     def encrypt(self, data):
         return [self.__encrypt_value(value, self.key[i % self.key_len]) for i, value in enumerate(data)]
 
+    @profile
     def decrypt(self, data):
         return [self.__encrypt_value(value, -self.key[i % self.key_len]) for i, value in enumerate(data)]
 
+    @profile
     def encrypt_words(self, words):
         i = 0
         result = []
@@ -54,6 +59,7 @@ class VigenereWithInterruptersCipher(Cipher):
     def __encrypt_value(self, value, key):
         return (value + key) % self.modulo
 
+    @profile
     def encrypt(self, data):
         result = []
         key_index = 0
@@ -65,6 +71,7 @@ class VigenereWithInterruptersCipher(Cipher):
             key_index += 1
         return result
 
+    @profile
     def decrypt(self, data):
         result = []
         key_index = 0
@@ -76,6 +83,7 @@ class VigenereWithInterruptersCipher(Cipher):
             key_index += 1
         return result
 
+    @profile
     def encrypt_words(self, words):
         i = 0
         key_index = 0
@@ -92,6 +100,7 @@ class VigenereWithInterruptersCipher(Cipher):
             result.append(encrypted)
         return result
 
+    @profile
     def decrypt_words(self, words):
         i = 0
         key_index = 0

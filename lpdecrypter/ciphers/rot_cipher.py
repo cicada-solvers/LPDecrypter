@@ -1,5 +1,7 @@
-
 from .cipher import Cipher
+
+from ..benchmarking import profile
+
 
 class RotCipher(Cipher):
     """
@@ -9,8 +11,10 @@ class RotCipher(Cipher):
         self.rotations = rotations
         self.modulo = modulo
 
+    @profile
     def encrypt(self, data):
         return [(value + self.rotations) % self.modulo for value in data]
 
+    @profile
     def decrypt(self, data):
         return [(value - self.rotations) % self.modulo for value in data]

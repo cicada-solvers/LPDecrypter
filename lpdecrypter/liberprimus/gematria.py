@@ -1,3 +1,5 @@
+from ..benchmarking import profile
+
 value_to_rune = ['ᚠ', 'ᚢ', 'ᚦ', 'ᚩ', 'ᚱ', 'ᚳ', 'ᚷ', 'ᚹ', 'ᚻ', 'ᚾ', 'ᛁ', 'ᛂ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛋ', 'ᛏ',
          'ᛒ', 'ᛖ', 'ᛗ', 'ᛚ', 'ᛝ', 'ᛟ', 'ᛞ', 'ᚪ', 'ᚫ', 'ᚣ', 'ᛡ', 'ᛠ']
 value_to_latin = ['F', 'U', 'TH', 'O', 'R', 'C', 'G', 'W', 'H', 'N', 'I', 'J', 'EO', 'P', 'X',
@@ -26,6 +28,7 @@ prime_to_value = {prime: i for i, prime in enumerate(value_to_prime)}
 prime_to_rune = {prime: rune for prime, rune in zip(value_to_prime, value_to_rune)}
 prime_to_latin = {prime: latin for prime, latin in zip(value_to_prime, value_to_latin)}
 
+@profile
 def runes_to_latin(runes):
     """
         Decodes runes back to latin
@@ -50,6 +53,7 @@ def _iter_runes_from_latin(latins):
             yield latins[i] # handle commas spaces and so on
             i += 1
 
+@profile
 def latin_to_runes(latin_fragments):
     """
         Decodes latin fragments back to runes

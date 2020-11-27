@@ -4,6 +4,8 @@ from .analyzer import Analyzer
 import matplotlib.pyplot as plt
 import numpy as np
 
+from ..benchmarking import profile
+
 class BigramAnalyzer(Analyzer):
     """
         Basic bigram frequency analysis
@@ -22,6 +24,7 @@ class BigramAnalyzer(Analyzer):
             raise NotImplementedError('In future implementation alphabet could also have an encoding space that isnt like range(0, n)')
             # basically this is handled by creating a 1-1 mapping from range(0, alphabet.get_encoding_space_cardinality()) to the encoding space
 
+    @profile
     def analyze(self, data):
         data = self.alphabet.encode_words(data.split(' '))
         if not self.is_range_from_zero:
