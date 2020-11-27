@@ -1,5 +1,5 @@
 from .cipher import Cipher
-from ..number_theory import is_prime, inverse_modulo
+from ..number_theory import is_prime, inverse_modulo_or_zero
 
 class AddedLambdaKeyCipher(Cipher):
     """
@@ -37,7 +37,8 @@ class MultipliedLambdaKeyCipher(Cipher):
         return [(value * self.key_lambda(i)) % self.modulo for i, value in enumerate(data)]
 
     def decrypt(self, data):
-        return [(value * inverse_modulo(self.key_lambda(i), self.modulo)) % self.modulo for i, value in enumerate(data)]
+        # handle 0 in the key but really key should have zeros
+        return [(value * inverse_modulo_or_zero(self.key_lambda(i), self.modulo)) % self.modulo for i, value in enumerate(data)]
 
     def encrypt_words(self, words):
         raise NotImplementedError('Do this')

@@ -14,3 +14,8 @@ def prime(n):
 
 def inverse_modulo(n, mod):
     return pow(n, -1, mod)
+
+def inverse_modulo_or_zero(n, mod):
+    if n == 0:
+        return 0
+    return inverse_modulo(n, mod)

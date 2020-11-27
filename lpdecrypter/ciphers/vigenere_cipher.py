@@ -1,5 +1,5 @@
 from .cipher import Cipher
-from ..number_theory import is_prime, inverse_modulo
+from ..number_theory import is_prime, inverse_modulo_or_zero
 
 class VigenereCipher(Cipher):
     """
@@ -127,8 +127,8 @@ class MultipledVigenereCipher(Cipher):
         ]
 
     def decrypt(self, data):
-        return [
-            (value * inverse_modulo(self.key[i % self.key_len], self.modulo)) % self.modulo
+        return [ # handle zeros in the key, but really key should have zeros
+            (value * inverse_modulo_or_zero(self.key[i % self.key_len], self.modulo)) % self.modulo
             for i, value in enumerate(data)
         ]
 
