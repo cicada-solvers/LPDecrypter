@@ -1,7 +1,3 @@
-
-DISPLAY_TEXT = 0
-DISPLAY_PLOT = 1
-
 class Analyzer(object):
 
     """
@@ -9,7 +5,7 @@ class Analyzer(object):
     """
     def analyze(self, data):
         """
-            Analyzes the given data
+            Analyzes the given data (data could be strings, lists or whatever)
         """
         pass
 
