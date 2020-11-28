@@ -22,7 +22,8 @@ class BigramAnalyzer(Analyzer):
         self.is_range_from_zero = is_range_from_zero
         self.use_decoded_values = use_decoded_values
         if not is_range_from_zero:
-            raise NotImplementedError('In future implementation alphabet could also have an encoding space that isnt like range(0, n)')
+            # NOT YET IMPLEMENTED
+            raise Exception('In future implementation alphabet could also have an encoding space that isnt like range(0, n)')
             # basically this is handled by creating a 1-1 mapping from range(0, alphabet.get_encoding_space_cardinality()) to the encoding space
 
     @profile
@@ -30,7 +31,8 @@ class BigramAnalyzer(Analyzer):
         data = self.alphabet.encode_words(data.split(' '))
         if not self.is_range_from_zero:
             # here we should map data into range(0, self.N)
-            raise NotImplementedError('In future implementation alphabet could also have an encoding space that isnt like range(0, n)')
+            # NOT YET IMPLEMENTED
+            raise Exception('In future implementation alphabet could also have an encoding space that isnt like range(0, n)')
         frequencies = np.zeros((self.N, self.N), dtype=int)
         for word in data:
             for i in range(0, len(word) - 1):

@@ -22,8 +22,10 @@ class AddedLambdaKeyCipher(Cipher):
 
     @profile
     def encrypt_words(self, words):
-        raise NotImplementedError('Do this')
+        # NOT YET IMPLEMENTED
+        raise Exception('Do this')
 
     @profile
     def decrypt_words(self, words):
-        raise NotImplementedError('Do this')
+        # NOT YET IMPLEMENTED
+        raise Exception('Do this')

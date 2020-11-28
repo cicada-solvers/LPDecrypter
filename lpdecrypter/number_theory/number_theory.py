@@ -8,13 +8,15 @@ def is_prime(n):
         # in this case do a binary search in the table to see
         # if there is n
         return n in prime_set
-    raise NotImplementedError('Really need to find a good library for primes')
+    # NOT YET IMPLEMENTED
+    raise Exception('Really need to find a good library for primes')
 
 @profile
 def prime(n):
     if n < prime_table_len:
         return prime_table[n]
-    raise NotImplementedError('Really need to find a good library for primes')
+    # NOT YET IMPLEMENTED
+    raise Exception('Really need to find a good library for primes')
 
 @profile
 def inverse_modulo(n, mod):
