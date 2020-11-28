@@ -35,6 +35,7 @@ class VigenereCipher(Cipher):
             result.append(encrypted)
         return result
 
+    @profile
     def decrypt_words(self, words):
         i = 0
         result = []
