@@ -1,5 +1,5 @@
 from .alphabets import *
-from .analyzers import *
+from .statistics import *
 from .ciphers import *
 from .liberprimus import *
 from .number_theory import *
